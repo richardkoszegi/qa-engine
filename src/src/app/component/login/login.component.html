@@ -1,0 +1,19 @@
+<h2 style="margin: 0 auto; width: 50px;">Bejelentkezés</h2>
+
+<form (ngSubmit)="login(userName.value)" #f="ngForm" class="login-form">
+
+      <mat-form-field class="input-full-width">
+        <input id="username" 
+               matInput 
+               placeholder="Felhasználónév" 
+               name="username" 
+               ngModel required #userName>
+      </mat-form-field>
+
+        <button id="btn-add" 
+                mat-button 
+                type="submit"
+                [disabled]="!f.valid">
+          Login
+        </button>
+  </form>

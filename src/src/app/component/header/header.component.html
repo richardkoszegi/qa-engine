@@ -1,0 +1,6 @@
+<mat-toolbar>
+  <a href="#" class="navbar-brand" style="text-decoration: none; color: black;">QA Engine</a>
+  <button mat-button [routerLink]="['/home']" *ngIf="isUserLoggedIn()">Kezdőoldal</button>
+  <button mat-button [routerLink]="['/new-question']" *ngIf="isUserLoggedIn()">Új kérdés</button>
+  <button mat-button (click)="logout()" *ngIf="isUserLoggedIn()">Kilépés</button>
+</mat-toolbar>

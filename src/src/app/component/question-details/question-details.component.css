@@ -1,0 +1,8 @@
+.correct-answer {
+  background: green;
+  color: white;
+}
+
+mat-card {
+  margin-top: 20px;
+}
