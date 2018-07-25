@@ -1,11 +1,11 @@
-<h1 mat-dialog-title>Bejelentkezés</h1>
+<h1 mat-dialog-title>{{ 'login' | localize}}</h1>
 <div mat-dialog-content>
   <form (ngSubmit)="login(userName.value)" #f="ngForm" class="login-form">
 
     <mat-form-field class="input-full-width">
       <input id="username"
              matInput
-             placeholder="Felhasználónév"
+             placeholder="{{'userName' | localize}}"
              name="username"
              ngModel required #userName>
     </mat-form-field>
@@ -14,7 +14,7 @@
             mat-button
             type="submit"
             [disabled]="!f.valid">
-      Login
+      {{ 'login' | localize}}
     </button>
   </form>
 </div>

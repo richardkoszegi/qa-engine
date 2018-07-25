@@ -14,6 +14,8 @@ import {QuestionService} from './service/question.service';
 import {UserService} from './service/user.service';
 import {LoginDialogComponent} from './component/login-dialog/login-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LocalizationService} from './service/localization.service';
+import {LocalizationPipe} from './pipe/localization.pipe';
 
 /**
  * Routing configuration.
@@ -42,11 +44,12 @@ export const appRoutes: Routes = [
   declarations: [AppComponent,
     HeaderComponent,
     HomeComponent,
+    LocalizationPipe,
     LoginDialogComponent,
     NewQuestionComponent,
     QuestionDetailsComponent
   ],
-  providers: [QuestionService, UserService],
+  providers: [LocalizationService, QuestionService, UserService],
   bootstrap: [AppComponent],
   entryComponents: [LoginDialogComponent]
 })

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 import { UserService } from '../../service/user.service';
+import {LocalizationService} from '../../service/localization.service';
 
 /**
  *  The header component. Contains the navigation bar, the app brand and the logout button.
@@ -12,12 +13,8 @@ import { UserService } from '../../service/user.service';
 })
 export class HeaderComponent {
 
-  /**
-   * The constructor.
-   * @param {Router} router Injected router serivce.
-   * @param {UserService} userService Injected {@link UserService}.
-   */
-  constructor(private router: Router, private userService: UserService) {}
+
+  constructor(private router: Router, private userService: UserService, private localizationService: LocalizationService) {}
 
   /**
    * Calls the {@link UserService}'s isUserLoggedIn() method
@@ -33,5 +30,9 @@ export class HeaderComponent {
   logout() {
     this.userService.logout();
     this.router.navigate(['/']);
+  }
+
+  changeLanguage() {
+    this.localizationService.switchLanguage();
   }
 }

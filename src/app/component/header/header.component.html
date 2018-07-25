@@ -1,6 +1,7 @@
 <mat-toolbar>
   <a href="#" class="navbar-brand" style="text-decoration: none; color: black;">QA Engine</a>
-  <button mat-button [routerLink]="['/home']" *ngIf="isUserLoggedIn()">Kezdőoldal</button>
-  <button mat-button [routerLink]="['/new-question']" *ngIf="isUserLoggedIn()">Új kérdés</button>
-  <button mat-button (click)="logout()" *ngIf="isUserLoggedIn()">Kilépés</button>
+  <button mat-button [routerLink]="['/home']" *ngIf="isUserLoggedIn()">{{'homePage' | localize}}</button>
+  <button mat-button [routerLink]="['/new-question']" *ngIf="isUserLoggedIn()">{{'newQuestion' | localize}}</button>
+  <button mat-button (click)="changeLanguage()" *ngIf="isUserLoggedIn()">{{'changeLanguage' | localize | titlecase}}</button>
+  <button mat-button (click)="logout()" *ngIf="isUserLoggedIn()">{{'logout' | localize}}</button>
 </mat-toolbar>

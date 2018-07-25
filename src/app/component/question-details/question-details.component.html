@@ -1,9 +1,9 @@
 <mat-card style="background: blue; color: white;">
   <mat-card-header>
-    <mat-card-title>{{question.author}} kérdezte: {{question.name}}</mat-card-title>
+    <mat-card-title>{{question.author}} {{'asked' | localize}}: {{question.name}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    Leírás:
+    {{'description' | localize | titlecase}}:
     <p>{{question.description}}</p>
   </mat-card-content>
 </mat-card>
@@ -11,75 +11,42 @@
 <mat-card *ngFor="let answer of question.answers; let i = index"
 [ngClass]="{'correct-answer': answer.isCorrect}">
   <mat-card-header>
-    <mat-card-title>{{answer.author}} írta</mat-card-title>
+    <mat-card-title>{{answer.author}} {{'wrote' | localize}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <p>{{answer.answer}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button *ngIf="isUserOwnsThisQuestion() && !answer.isCorrect" 
-              (click)="acceptAnswer(i)" >Elfogad</button>
+    <button mat-button *ngIf="isUserOwnsThisQuestion() && !answer.isCorrect"
+              (click)="acceptAnswer(i)" >{{'accept' | localize | titlecase}}</button>
   </mat-card-actions>
 </mat-card>
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Új válasz</mat-card-title>
+    <mat-card-title>{{'newAnswer' | localize | titlecase}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (ngSubmit)="addAnswer(f)" 
-          #f="ngForm" 
+    <form (ngSubmit)="addAnswer(f)"
+          #f="ngForm"
           class="form-horizontal">
 
           <mat-form-field class="input-full-width">
       <textarea matInput
-                rows="5" 
+                rows="5"
                 id="answer"
-                placeholder="Válasz" 
-                name="answer" 
+                placeholder="{{'answer' | localize | titlecase}}"
+                name="answer"
                 ngModel required #answer></textarea>
       </mat-form-field>
         <div>
-          <button id="btn-add" 
+          <button id="btn-add"
                   mat-button
                   type="submit"
                   [disabled]="!f.valid">
-            Hozzáad
+            {{'add' | localize | titlecase}}
           </button>
         </div>
     </form>
   </mat-card-content>
 </mat-card>
-
-<!--<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Új válasz</h3>
-  </div>
-  <div class="panel-body">
-    <form (ngSubmit)="addAnswer(f)" 
-          #f="ngForm" 
-          class="form-horizontal">
-
-      <div style="margin-bottom: 25px" class="form-group row col-lg-12">
-        <label for="answer">Válasz</label>
-        <textarea class="form-control"
-                  rows="5" 
-                  id="answer"
-                  placeholder="Válasz" 
-                  name="answer" 
-                  ngModel required #answer></textarea>
-      </div>
-
-      <div class="form-group row col-lg-12 text-center">
-        <div>
-          <button id="btn-add" 
-                  class="btn btn-success" 
-                  type="submit"
-                  [disabled]="!f.valid">
-            Hozzáad
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>-->
